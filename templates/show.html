@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Pets - {{pet.name}}
+{% endblock %}
+
+{% block content %}
+    <h1>{{pet.name}}</h1>
+
+    <p>Species: {{pet.species}}</p>
+
+    {% if pet.age %}
+    <p>Age: {{pet.age}}</p>
+    {% endif %}
+
+    {% if pet.photo_url %}
+    <image style="height:150px;" src="{{pet.photo_url}}"></image>
+    {% endif %}
+
+    {% if pet.notes %}
+    <p>{{pet.notes}}</p>
+    {% endif %}
+
+    <form action="/pets/{{pet.id}}/edit">
+        <button>Edit</button>
+    </form>
+    <br>
+    <form action="/pets/{{pet.id}}/delete">
+        <button>Remove from Records</button>
+    </form>
+{% endblock %}

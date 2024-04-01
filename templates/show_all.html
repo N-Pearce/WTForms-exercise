@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All Pets
+{% endblock %}
+
+{% block content %}
+
+<h1>Adopt a Pet!</h1>
+
+<div style="display: flex; flex-wrap: wrap;">
+{% for pet in pets %}
+    <div style="margin-right:10px">
+        {% if pet.photo_url %}
+        <image src="{{pet.photo_url}}" style="height:100px; margin-bottom: -20px;"></image>
+        {% endif%}
+        <p><a href="/pets/{{pet.id}}">{{pet.name}}</a>
+            {% if pet.available %}
+            <span> is available!</span>
+            {% endif %}
+        </p>
+    </div>
+{% endfor%}
+</div>
+
+<form action="/add">
+    <button>Add Pet</button>
+</form>
+
+{% endblock %}
